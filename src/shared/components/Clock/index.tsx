@@ -3,8 +3,11 @@ import { Box, Typography } from "@mui/material";
 import { useContext } from "react";
 import { CountDownContext } from "../../contexts/CountDown";
 
-export const Clock = () => {
+export function sum (a, b) {
+  return a + b;
+}
 
+export const Clock = () => {
   const {
     seconds,
     minutes,
