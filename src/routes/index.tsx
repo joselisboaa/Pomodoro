@@ -12,11 +12,11 @@ export const AppRoutes = () => {
         <BrowserRouter>
             <AuthProvider>
                 <Routes>
-                    <Route path="/pagina-inicial" element={<Home />} />
+                    {/* <Route path="/pagina-inicial" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/cadastrar" element={<Cadastro />} />
-                    <Route path="*" element={<Navigate to="/pagina-inicial"/>} />
-                <Route path="/pomodoro" element={<Pomodoro />} />
+                    <Route path="*" element={<Navigate to="/pagina-inicial"/>} /> */}
+                <Route path="/" element={<Pomodoro />} />
                 </Routes>
             </AuthProvider>
         </BrowserRouter>

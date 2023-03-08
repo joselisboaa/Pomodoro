@@ -1,6 +1,6 @@
 import { CountDownProvider } from "./shared/contexts/CountDown";
 import { ThemeProvider } from "@mui/material";
-import { theme } from "./shared/themes/test";
+import { theme } from "./shared/themes/theme";
 import { AppRoutes } from "./routes/index";
 
 export const App = () => {
