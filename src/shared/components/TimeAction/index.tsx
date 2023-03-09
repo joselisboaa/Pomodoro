@@ -10,7 +10,6 @@ import { Resume } from "../Resume";
 import { Skip } from "../Skip";
 
 export const TimeAction = () => {
-
   const {
     startCountDown,
     resetCountDown,

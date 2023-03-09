@@ -1,4 +1,6 @@
-const background = {
+import { SxProps } from "@mui/material/styles";
+
+const background: SxProps = {
     display: "flex",
     height: "100vh",
     flexDirection: "column",
@@ -7,7 +9,13 @@ const background = {
     backgroundColor: "#0f0f0f",
 };
 
-const box = {
+const googleRegisterContainer: SxProps = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+};
+
+const box: SxProps = {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
@@ -16,7 +24,7 @@ const box = {
     width: "240px",
 };
 
-const paper = {
+const paper: SxProps = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -25,7 +33,7 @@ const paper = {
     backgroundColor: "#222222",
 };
 
-const title = {
+const title: SxProps = {
     fontWeight: "700",
     color: "#ffffff"
 };
@@ -34,34 +42,48 @@ const paperStyle = {
     width: "725px",
 };
 
-const a = {
+const helperText: SxProps = {
     fontWeight: "500",
     color: "#ffffff"
 };
+const loginText: SxProps = {
+    "a": {
+        color: "#4DCBD3",
+    }
+};
 
-const button = {
+const button: SxProps = {
     borderRadius: "100px"
 };
 
-const titleColor = {
+const titleColor: SxProps = {
     display: "inline",
     fontWeight: "200",
     color: "#4DCBD3"
 };
 
-const logoTitle = {
+const logoTitle: SxProps = {
 display: "inline",
 fontWeight: "200",
 color: "#ffffff"
 };
 
+const headerContainer: SxProps = { 
+    mt: 0, 
+    mb: "72px" 
+};
+
 export const Styles ={
+    googleRegisterContainer,
+    headerContainer,
     titleColor,
     logoTitle,
     background,
+    helperText,
+    paperStyle,
+    loginText,
     button,
     title,
     paper,
     box,
-    a,
 }

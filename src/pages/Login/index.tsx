@@ -1,4 +1,4 @@
-import GoogleIcon from '@mui/icons-material/Google';
+import GoogleIcon from "@mui/icons-material/Google";
 import {
   Button,
   TextField,
@@ -6,40 +6,41 @@ import {
   Typography,
   Paper,
   FormHelperText,
-} from '@mui/material';
-import './styles.css';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import * as Yup from 'yup'
+} from "@mui/material";
+import "./styles.css";
+import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
+import * as Yup from "yup";
+
+interface IFormValues {
+  email: string;
+  password: string;
+}
 
 export const Login = () => {
   const initialValues = {
-    email: '',
-    password: '',
-  }
+    email: "",
+    password: "",
+  };
 
   const validationSchema = Yup.object().shape({
-    email: Yup.string().email('Email não válido').required('Campo Obrigatório'),
+    email: Yup.string().email("Email não válido").required("Campo Obrigatório"),
     senha: Yup.string().matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&.,])[A-Za-z\d@$!%*#?&.,]{8,}$/,
-      'No mínimo 8 caracteres, ' +
-      'uma letra maiúscula e minúscula, ' +
-      'um número e um caracter especial'
-    ).required('Campo Obrigatório')
-  })
+      "No mínimo 8 caracteres, " +
+      "uma letra maiúscula e minúscula, " +
+      "um número e um caracter especial"
+    ).required("Campo Obrigatório")
+  });
 
-  const onSubmit = (values, props) => {
-    console.log("submit")
-    console.log(values)
-    console.log(props)
-    settimeout(() => {
+  const onSubmit = (values: IFormValues, props: FormikHelpers<IFormValues>) => {
+    setTimeout(() => {
       props.resetForm()
       props.setSubmitting(false)
     }, 2000)
-  }
+  };
 
   return (
-
-    <Box id='login'>
-      <Box className='sobre'>
+    <Box id="login">
+      <Box className="sobre">
         <Box>
           <Typography component="h2">
             HealthPomo
@@ -67,31 +68,31 @@ export const Login = () => {
           </Typography>
         </Box>
       </Box>
-      <Paper elevation={9} id='formularioLogin'>
+      <Paper elevation={9} id="formularioLogin">
         <Typography component="h1">
           Login
         </Typography>
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center'
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center"
           }}
         >
           <Box sx={{ mt: 5, mb: 2 }}>
             <Button
               type="submit"
               variant="contained"
-              color={'secondary'}
-              sx={{ borderRadius: '100px' }}
+              color={"secondary"}
+              sx={{ borderRadius: "100px" }}
               startIcon={<GoogleIcon fontSize="large" />}
             >
               Entrar com Google
             </Button>
           </Box>
-          <Typography color={'white'}>ou</Typography>
+          <Typography color={"white"}>ou</Typography>
 
-          <Box noValidate sx={{ mt: 2 }} >
+          <Box sx={{ mt: 2 }} >
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
               {(props) => (
                 <Form>
@@ -118,12 +119,12 @@ export const Login = () => {
                     as={TextField}
                   />
                   <ErrorMessage name="senha" component={FormHelperText} />
-                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Button variant="contained" type='submit' size="medium" href="pagina-inicial" sx={{
-                      alignSelf: 'center'
+                  <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <Button variant="contained" type="submit" size="medium" href="pagina-inicial" sx={{
+                      alignSelf: "center"
                     }}>Entrar</Button>
                   </Box>
-                  <Box className='cadastro'>
+                  <Box className="cadastro">
                     <span>Não tem uma conta?</span>
                     <a href="cadastrar">Cadastre-se</a>
                   </Box>

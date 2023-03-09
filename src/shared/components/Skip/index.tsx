@@ -1,6 +1,8 @@
+interface ISvg {
+  color: string;
+}
 
-
-export const Skip = ({color}) => {
+export const Skip: React.FC<ISvg> = ({color}) => {
   return (
     <svg width="52" height="53" viewBox="0 0 52 53" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect y="0.5" width="52" height="52" rx="26" fill={color}/>

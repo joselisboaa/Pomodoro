@@ -1,6 +1,8 @@
+interface ISvg {
+  color: string;
+}
 
-
-export const Resume = ({color}) => {
+export const Resume: React.FC<ISvg> = ({color}) => {
   return (
     <svg width="96" height="97" viewBox="0 0 96 97" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect y="0.5" width="96" height="96" rx="48" fill={color}/>
