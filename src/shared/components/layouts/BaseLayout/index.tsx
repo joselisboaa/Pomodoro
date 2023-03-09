@@ -55,7 +55,6 @@ export const BaseLayout: React.FC<IBaseLayout> = ({ children }) => {
         </Box>
         <Box id="end">
           <Box id="buttons">
-            <Button variant="contained" size="small" onClick={login}>Fazer login</Button>
             <Box>
               <IconButton
                 aria-label="more"
