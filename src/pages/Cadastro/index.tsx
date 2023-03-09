@@ -39,15 +39,15 @@ export const Cadastro: React.FC = () => {
     };
 
     const validationSchema = Yup.object().shape({
-        nome: Yup.string().min(3,"O nome precisa ter pelo menos três caracteres").required("Campo Obrigatório"),
-        email: Yup.string().email("Email não válido").required("Campo Obrigatório"),
+        nome: Yup.string().min(3,"O nome precisa ter pelo menos três caracteres.").required("Campo Obrigatório."),
+        email: Yup.string().email("Email não válido.").required("Campo Obrigatório."),
         senha: Yup.string().matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&.,])[A-Za-z\d@$!%*#?&.,]{8,}$/,
-            "No mínimo 8 caracteres" +
-            "uma letra maiúscula e minúscula, " +
-            "um número e um caracter especial"
-        ).required("Campo Obrigatório"),
-        confirmsenha: Yup.string().oneOf([Yup.ref("senha")], "A senha não concide com a primeira").required("Campo Obrigatório"),
-        confirmemailbox: Yup.string().oneOf(["true"], "Confirme o seu Email")
+            "No mínimo 8 caracteres." +
+            "uma letra maiúscula e minúscula." +
+            "um número e um caracter especial."
+        ).required("Campo Obrigatório."),
+        confirmsenha: Yup.string().oneOf([Yup.ref("senha")], "A senha não concide com a primeira.").required("Campo Obrigatório."),
+        confirmemailbox: Yup.string().oneOf(["true"], "Confirme o seu Email.")
     });
 
     const onSubmit = async (values: IFormDataValues, props: FormikHelpers<IFormDataValues>) => {
@@ -64,7 +64,7 @@ export const Cadastro: React.FC = () => {
 
     return (
         <Box sx={Styles.background}>
-            <Box sx={{ mt: 0, mb: "72px" }}>
+            <Box sx={Styles.headerContainer}>
                 <Box id="header-logo" sx={Styles.box}>
                     <Box>
                         <img src={Logo} width="78px" />
@@ -74,16 +74,12 @@ export const Cadastro: React.FC = () => {
                     </Typography>
                 </Box>
             </Box>
-            <Paper elevation={9} sx={Styles.paper} style={paperstyle}>
+            <Paper elevation={9} sx={Styles.paper} style={Styles.paperStyle}>
                 <Typography component="h1" variant="h4" sx={Styles.title}>
                     Cadastro
                 </Typography>
                 <Box
-                    sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center"
-                    }}
+                    sx={Styles.googleRegisterContainer}
                 >
                     <Box sx={{ mt: 5, mb: 2 }}>
                         <Button
@@ -148,11 +144,11 @@ export const Cadastro: React.FC = () => {
                                         </Grid>
                                         <Grid item xs={12}>
                                             <FormControlLabel
-                                                sx={Styles.a}
+                                                sx={Styles.helperText}
                                                 control={<Field as={Checkbox} name="confirmemailbox" color="primary" />}
                                                 label="Confirme o Email"
                                             />
-                                            <FormHelperText sx={Styles.a}><ErrorMessage name="confirmemailbox" /></FormHelperText>
+                                            <FormHelperText sx={Styles.helperText}><ErrorMessage name="confirmemailbox" /></FormHelperText>
                                         </Grid>
                                     </Grid>
                                     <Grid container justifyContent="center">
@@ -164,7 +160,7 @@ export const Cadastro: React.FC = () => {
                                                 color={"primary"}
                                                 disabled={props.isSubmitting}
                                             >
-                                                {props.isSubmitting ? "carregando" : "Cadastre-se"}
+                                                {props.isSubmitting ? "Carregando" : "Cadastre-se"}
                                             </Button>
                                         </Box>
                                     </Grid>
@@ -173,11 +169,7 @@ export const Cadastro: React.FC = () => {
                         </Formik>
                         <Grid container justifyContent="center">
                             <Grid item>
-                                <Typography color="white" sx={{
-                                    "a": {
-                                        color: "#4DCBD3",
-                                    }
-                                }}>
+                                <Typography color="white" sx={Styles.loginText}>
                                     Já tem login?
                                     <Link href="/login" variant="body1">
                                         Fazer login
