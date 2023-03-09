@@ -1,37 +1,52 @@
-import React, { useState, createContext } from "react"
-import { useNavigate } from "react-router-dom"
+import React, { useState, createContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-export const AuthContext = createContext();
+interface IAuthProvider {
+    children: React.ReactNode;
+}
 
-export const AuthProvider = ({ children }) => {
-    const navigate = useNavigate();
-    const [user, serUser] = useState(null);
+type TUser = {
+    id: number;
+    email: string;
+} | null
 
-    const login = (email, password) => {
-        console.log("login auth", { email, password});
+interface IAuthContext {
+    authenticated: boolean;
+    user: TUser;
+    login: (email: string, password: string) => void;
+    logout: () => void;
+}
 
-        //api call - vou simular
-        const loggedUser = {
-            id: "123",
-            email,
-        };
+export const AuthContext = createContext({} as IAuthContext);
 
-        localStorage.setItem("user", JSON.stringify(loggedUser));
+export const AuthProvider: React.FC<IAuthProvider> = ({ children }) => {
+  const navigate = useNavigate()
+  const [user, serUser] = useState<TUser>(null)
 
-        if (password === "secret"){
-            serUser(loggedUser);
-            navigate("/");
-        }
-    };
+  const login = (email: string, password: string) => {
+    const loggedUser = {
+      id: 123,
+      email
+    }
 
-    const logout = () => {
-        console.log("logout");
-        serUser(null);
-        navigate("/login");
-    };
+    localStorage.setItem('user', JSON.stringify(loggedUser))
 
-    return (
-        <AuthContext.Provider value={{ authenticated: !!user, user, login, logout}}
-        >{children}</AuthContext.Provider>
-    );
-};
+    if (password === 'secret') {
+      serUser(loggedUser)
+      navigate('/')
+    }
+  }
+
+  const logout = () => {
+    serUser(null)
+    navigate('/login')
+  }
+
+  return (
+    <AuthContext.Provider
+      value={{ authenticated: !!user, user, login, logout }}
+    >
+      {children}
+    </AuthContext.Provider>
+  )
+}

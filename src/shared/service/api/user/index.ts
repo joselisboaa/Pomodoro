@@ -1,29 +1,23 @@
 import { Api } from '../index'
 
-
-const postUser = async (email, nickname, password) => {
-
+const postUser = async (email: string, nickname: string, password: string) => {
     try {
-
-        const id = null
+        const id = null;
         const body = {
-            id:id,
-            email: email,
-            password: password,
+            id,
+            email,
+            password,
             login: nickname
-        }
+        };
 
-        const { data } = await Api.post("/save", body)
+        const { data } = await Api.post("/save", body);
 
-        console.log(data)
-
-        return data
-    } catch(error) {
-        
-        throw (error.response.data)
+        return data;
+    } catch(error: any) {
+        throw (error.response.data);
     }
 }
 
-export const userServide = {
+export const userServices = {
     postUser
-}
+};
