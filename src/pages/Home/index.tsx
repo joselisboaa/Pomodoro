@@ -5,7 +5,7 @@ import { BaseLayout } from "../../shared/components/layouts/BaseLayout";
 import { useNavigate } from "react-router";
 
 export const Home = () => {
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <BaseLayout>

@@ -2,12 +2,18 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import { Cadastro, Home, Login } from "../pages"
 import { AuthProvider, AuthContext } from "../contexts/auth";
 import { Pomodoro } from "../pages";
+import { useContext } from "react";
 
-export const AppRoutes = () => {
-    const Private = ({ children }) => {
-        const { authenticated } = useContext(AuthContext);
-        return authenticated ? children : <Navigate to="/login" />;
-    };
+// interface IPrivateRoute {
+//     children: React.ReactNode;
+// }
+
+// const Private: React.FC<IPrivateRoute> = ({ children }) => {
+//     const { authenticated } = useContext(AuthContext);
+//     return authenticated ? children : <Navigate to="/login" />;
+// };
+
+export const AppRoutes: React.FC = () => {
     return (
         <BrowserRouter>
             <AuthProvider>
