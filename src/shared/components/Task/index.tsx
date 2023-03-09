@@ -8,15 +8,16 @@ import { useContext } from "react";
 import { CountDownContext } from "../../contexts/CountDown";
 import { useState } from "react";
 
-export const Task = ({task}) => {
+interface ITask {
+  task: string;
+}
 
+export const Task: React.FC<ITask> = ({task}) => {
   const {
     isFinished
   } = useContext(CountDownContext);
 
   const [stageNumber, setStageNumber] = useState(0);
-
-  
 
   return (
     <Box sx={styles.taskWrapper}>
